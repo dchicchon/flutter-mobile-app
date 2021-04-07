@@ -6,9 +6,7 @@ class Name extends StatefulWidget {
 }
 
 class _NameState extends State<Name> {
-  void submitName() {
-
-  }
+  void submitName() {}
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +29,15 @@ class _NameState extends State<Name> {
                         Expanded(child: TextInputWidget())
                       ],
                     )),
-                OutlinedButton(
-                  onPressed: this.submitName,
-                  child: Text("Submit"),
-                  style:,
-                )
+                Container(
+                    margin: EdgeInsetsDirectional.only(top: 50),
+                    child: OutlinedButton(
+                        onPressed: this.submitName,
+                        child: Text("Update", style: TextStyle(fontSize: 15)),
+                        style: OutlinedButton.styleFrom(
+                            primary: Colors.white,
+                            backgroundColor: Colors.black,
+                            padding: EdgeInsets.fromLTRB(75, 15, 75, 15))))
               ],
             )));
   }
@@ -57,10 +59,14 @@ class _TextInputWidgetState extends State<TextInputWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return Padding(
+      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+      child:TextField(
       controller: nameController,
-      decoration:
-          InputDecoration(border: OutlineInputBorder(), labelText: "Name"),
-    );
+      decoration: InputDecoration(
+          border: OutlineInputBorder(),
+          labelText: "Name",
+          hintText: "Enter your name"),
+    ));
   }
 }
