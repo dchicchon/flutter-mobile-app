@@ -2,12 +2,21 @@ import 'package:flutter/material.dart';
 import 'TextInputWidget.dart';
 
 class PhoneNumber extends StatefulWidget {
+  final Function(String) callback;
+  PhoneNumber(this.callback);
+
   @override
   _PhoneNumberState createState() => _PhoneNumberState();
 }
 
 class _PhoneNumberState extends State<PhoneNumber> {
-  void submitPhoneNumber() {}
+  final phoneNumberController = TextEditingController();
+
+  void submitPhoneNumber() {
+    widget.callback(phoneNumberController.text);
+    phoneNumberController.clear();
+    Navigator.pop(context);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +35,9 @@ class _PhoneNumberState extends State<PhoneNumber> {
                     margin: EdgeInsetsDirectional.only(top: 25),
                     child: Row(
                       children: [
-                        Expanded(child: TextInputWidget()),
+                        Expanded(
+                            child: TextInputWidget(
+                                this.phoneNumberController, "Phone Number")),
                       ],
                     )),
                 Container(

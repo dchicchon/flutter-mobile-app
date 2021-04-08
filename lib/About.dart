@@ -2,12 +2,27 @@ import 'package:flutter/material.dart';
 import 'TextInputWidget.dart';
 
 class About extends StatefulWidget {
+  final Function(String) callback;
+  About(this.callback);
+
   @override
   _AboutState createState() => _AboutState();
 }
 
 class _AboutState extends State<About> {
-  void submitAbout() {}
+  final aboutController = TextEditingController();
+
+  void submitAbout() {
+    widget.callback(aboutController.text);
+    aboutController.clear();
+    Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    aboutController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +41,9 @@ class _AboutState extends State<About> {
                     margin: EdgeInsetsDirectional.only(top: 25),
                     child: Row(
                       children: [
-                        Expanded(child: TextInputWidget()),
+                        Expanded(
+                            child: TextInputWidget(this.aboutController,
+                                "Write a little something about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.  ")),
                       ],
                     )),
                 Container(

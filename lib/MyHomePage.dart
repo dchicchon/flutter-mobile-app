@@ -25,25 +25,59 @@ class MyHomePage extends StatefulWidget {
 
 // Actual widget build
 class _MyHomePageState extends State<MyHomePage> {
+  String name = "";
+  String email = "";
+  String phoneNumber = "";
+  String about = "";
+
+  void newName(String fname, String lname) {
+    this.setState(() {
+      name = fname + " " + lname;
+      this.name = name;
+    });
+  }
+
+  void newEmail(String email) {
+    this.setState(() {
+      this.email = email;
+    });
+  }
+
+  void newPhoneNumber(String phoneNumber) {
+    this.setState(() {
+      this.phoneNumber = phoneNumber;
+    });
+  }
+
+  void newAbout(String aboutText) {
+    this.setState(() {
+      this.about = aboutText;
+    });
+  }
+
   void updatePhoto() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => Photo()));
   }
 
   void updateName() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Name()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Name(this.newName)));
   }
 
   void updateEmail() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Email()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => Email(this.newEmail)));
   }
 
   void updatePhoneNumber() {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => PhoneNumber()));
+        context,
+        MaterialPageRoute(
+            builder: (context) => PhoneNumber(this.newPhoneNumber)));
   }
 
   void updateAbout() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => About()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => About(this.newAbout)));
   }
 
   @override
@@ -58,40 +92,75 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "Edit Profile",
-              style: TextStyle(
-                  fontSize: 25,
-                  color: Colors.blueAccent,
-                  fontWeight: FontWeight.w500),
+            Row(
+              children: [
+                Text(
+                  "Edit Profile",
+                  style: TextStyle(
+                      fontSize: 25,
+                      color: Colors.blueAccent,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
             ),
-            OutlinedButton(
-                onPressed: this.updatePhoto,
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/no_img.jpg'),
-                  backgroundColor: Colors.blue.shade800,
-                  radius: 50.0,
-                )),
-            OutlinedButton(
-                onPressed: this.updateName,
-                child: Text(
-                  'Name',
-                )),
-            OutlinedButton(
-                onPressed: this.updateEmail,
-                child: Text(
-                  'Email',
-                )),
-            OutlinedButton(
-                onPressed: this.updatePhoneNumber,
-                child: Text(
-                  'Phone Number',
-                )),
-            OutlinedButton(
-                onPressed: this.updateAbout,
-                child: Text(
-                  'Tell us about yourself',
-                )),
+            Row(
+              children: [
+                Expanded(
+                    child: OutlinedButton(
+                        onPressed: this.updatePhoto,
+                        child: CircleAvatar(
+                          backgroundImage: AssetImage('assets/no_img.jpg'),
+                          backgroundColor: Colors.blue.shade800,
+                          radius: 50.0,
+                        ))),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: OutlinedButton(
+                        onPressed: this.updateName,
+                        child: Text(
+                          'Name',
+                        ))),
+                Expanded(
+                  child: Text(this.name),
+                )
+              ],
+            ),
+            Row(children: [
+              Expanded(
+                  child: OutlinedButton(
+                      onPressed: this.updateEmail,
+                      child: Text(
+                        'Email',
+                      ))),
+              Expanded(
+                child: Text(this.email),
+              )
+            ]),
+            Row(children: [
+              Expanded(
+                  child: OutlinedButton(
+                      onPressed: this.updatePhoneNumber,
+                      child: Text(
+                        'Phone Number',
+                      ))),
+              Expanded(
+                child: Text(this.phoneNumber),
+              )
+            ]),
+            Row(children: [
+              Expanded(
+                  child: OutlinedButton(
+                      onPressed: this.updateAbout,
+                      child: Text(
+                        'Tell us about yourself',
+                      ))),
+              Expanded(
+                child: Text(this.about),
+              )
+            ]),
           ],
         ),
       ),

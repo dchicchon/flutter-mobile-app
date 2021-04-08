@@ -2,12 +2,30 @@ import 'package:flutter/material.dart';
 import 'TextInputWidget.dart';
 
 class Name extends StatefulWidget {
+  final Function(String, String) callback;
+  Name(this.callback);
+
   @override
   _NameState createState() => _NameState();
 }
 
 class _NameState extends State<Name> {
-  void submitName() {}
+  final fNameController = TextEditingController();
+  final lNameController = TextEditingController();
+
+  void submitName() {
+    widget.callback(fNameController.text, lNameController.text);
+    fNameController.clear();
+    lNameController.clear();
+    Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    fNameController.dispose();
+    lNameController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +44,12 @@ class _NameState extends State<Name> {
                     margin: EdgeInsetsDirectional.only(top: 25),
                     child: Row(
                       children: [
-                        Expanded(child: TextInputWidget()),
-                        Expanded(child: TextInputWidget())
+                        Expanded(
+                            child:
+                                TextInputWidget(this.fNameController, "First")),
+                        Expanded(
+                            child:
+                                TextInputWidget(this.lNameController, "Last"))
                       ],
                     )),
                 Container(
@@ -45,4 +67,3 @@ class _NameState extends State<Name> {
             )));
   }
 }
-
