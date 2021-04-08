@@ -32,12 +32,14 @@ class _NameState extends State<Name> {
                     )),
                 Container(
                     margin: EdgeInsetsDirectional.only(top: 50),
-                    child: OutlinedButton(
+                    child: ElevatedButton(
                         onPressed: this.submitName,
                         child: Text("Update", style: TextStyle(fontSize: 15)),
-                        style: OutlinedButton.styleFrom(
-                            primary: Colors.white,
-                            backgroundColor: Colors.black,
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.black,
+                            onPrimary: Colors.white,
+                            shadowColor: Colors.black,
+                            elevation: 10,
                             padding: EdgeInsets.fromLTRB(75, 15, 75, 15))))
               ],
             )));
