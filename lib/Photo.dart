@@ -10,6 +10,7 @@ class Photo extends StatefulWidget {
 }
 
 class _PhotoState extends State<Photo> {
+  // callback to parent widget
   void callPhotoCallback() {
     widget.callback();
   }

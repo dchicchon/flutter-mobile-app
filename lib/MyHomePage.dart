@@ -29,14 +29,20 @@ class _MyHomePageState extends State<MyHomePage> {
   String about =
       "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City";
   File _image;
-  final picker = ImagePicker();
 
+  // Used this code to upload images https://stackoverflow.com/questions/63114278/how-to-display-picked-image-in-a-circle-avatar-in-flutter
+  // We must have the image_picker dependency to all users to pick images from gallery or camera
+  // Future is an async function where we wait for promise to be fulfilled
   Future getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    // Waiting for user to pick file and so we can return the File object
+    final pickedFile =
+        await ImagePicker().getImage(source: ImageSource.gallery);
+
+    // Set state for our file path
     setState(() {
       this._image = File(pickedFile.path);
     });
-    print(this._image);
+    Navigator.pop(context); // so we can return to the previous screen
   }
 
   void submitPhoto() {
@@ -44,6 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _showPicker(context) {
+    // This allows it to be at the bottom of the screen
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
