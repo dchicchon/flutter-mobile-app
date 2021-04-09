@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/About.dart';
+import 'dart:io';
 import 'package:mobile_app/PhoneNumber.dart';
 import 'Email.dart';
+
 import 'Name.dart';
 import 'Photo.dart';
 
@@ -9,10 +11,6 @@ import 'Photo.dart';
 class MyHomePage extends StatefulWidget {
   final String title;
   MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
 
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
@@ -25,10 +23,12 @@ class MyHomePage extends StatefulWidget {
 
 // Actual widget build
 class _MyHomePageState extends State<MyHomePage> {
-  String name = "";
-  String email = "";
-  String phoneNumber = "";
-  String about = "";
+  String name = "Micah Smith";
+  String email = "micahsmith@gmail.com";
+  String phoneNumber = "(208)206-5039";
+  File photo;
+  String about =
+      "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City";
 
   void newName(String fname, String lname) {
     this.setState(() {
@@ -77,98 +77,113 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void updateAbout() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => About(this.newAbout)));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => About(this.newAbout)));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(widget.title),
-      // ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Row(
-              children: [
-                Text(
-                  "Edit Profile",
-                  style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.blueAccent,
-                      fontWeight: FontWeight.w500),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: OutlinedButton(
-                        onPressed: this.updatePhoto,
-                        child: CircleAvatar(
-                          backgroundImage: AssetImage('assets/no_img.jpg'),
-                          backgroundColor: Colors.blue.shade800,
-                          radius: 50.0,
-                        ))),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                    child: OutlinedButton(
-                        onPressed: this.updateName,
+        body: Container(
+            margin: EdgeInsets.fromLTRB(25, 50, 25, 0),
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 15),
                         child: Text(
-                          'Name',
-                        ))),
-                Expanded(
-                  child: Text(this.name),
-                )
+                          "Edit Profile",
+                          style: TextStyle(
+                              fontSize: 25,
+                              color: Colors.indigoAccent.shade400,
+                              fontWeight: FontWeight.w700),
+                        )),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                        onTap: this.updatePhoto,
+                        child: CircleAvatar(
+                            radius: 55.0,
+                            backgroundColor: Colors.indigoAccent.shade400,
+                            child: CircleAvatar(
+                                backgroundImage:
+                                    ExactAssetImage('assets/no_img.jpg'),
+                                backgroundColor: Colors.blue.shade800,
+                                radius: 50.0,
+                                child: Ink(
+                                    decoration: const ShapeDecoration(
+                                        color: Colors.white,
+                                        shape: CircleBorder()),
+                                    child: IconButton(
+                                        onPressed: this.updatePhoto,
+                                        icon: Icon(Icons.edit),
+                                        color: Colors.blue.shade800,
+                                        padding: EdgeInsets.fromLTRB(
+                                            50, 0, 0, 50)))))),
+                  ],
+                ),
+                Row(children: [
+                  Expanded(
+                      child: ListTile(
+                          onTap: this.updateName,
+                          title: Text("Name",
+                              style: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 13)),
+                          subtitle: Text(this.name,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          trailing: Icon(Icons.navigate_next, size: 35))),
+                ]),
+                Divider(height: 0.5, color: Colors.black),
+                Row(children: [
+                  Expanded(
+                      child: ListTile(
+                          onTap: this.updatePhoneNumber,
+                          title: Text("Phone",
+                              style: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 13)),
+                          subtitle: Text(this.email,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          trailing: Icon(Icons.navigate_next, size: 35)))
+                ]),
+                Divider(height: 0.5, color: Colors.black),
+                Row(children: [
+                  Expanded(
+                      child: ListTile(
+                          onTap: this.updateEmail,
+                          title: Text("Email",
+                              style: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 13)),
+                          subtitle: Text(this.phoneNumber,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          trailing: Icon(Icons.navigate_next, size: 35))),
+                ]),
+                Divider(height: 0.5, color: Colors.black),
+                Row(children: [
+                  Expanded(
+                      child: ListTile(
+                          onTap: this.updateAbout,
+                          title: Text("Tell us about yourself",
+                              style: TextStyle(
+                                  color: Colors.grey.shade500, fontSize: 13)),
+                          subtitle: Text(this.about,
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold)),
+                          trailing: Icon(Icons.navigate_next, size: 35))),
+                ]),
               ],
-            ),
-            Row(children: [
-              Expanded(
-                  child: OutlinedButton(
-                      onPressed: this.updateEmail,
-                      child: Text(
-                        'Email',
-                      ))),
-              Expanded(
-                child: Text(this.email),
-              )
-            ]),
-            Row(children: [
-              Expanded(
-                  child: OutlinedButton(
-                      onPressed: this.updatePhoneNumber,
-                      child: Text(
-                        'Phone Number',
-                      ))),
-              Expanded(
-                child: Text(this.phoneNumber),
-              )
-            ]),
-            Row(children: [
-              Expanded(
-                  child: OutlinedButton(
-                      onPressed: this.updateAbout,
-                      child: Text(
-                        'Tell us about yourself',
-                      ))),
-              Expanded(
-                child: Text(this.about),
-              )
-            ]),
-          ],
-        ),
-      ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: _incrementCounter,
-      //   tooltip: 'Increment',
-      //   child: Icon(Icons.add),
-      // ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+            )));
   }
 }

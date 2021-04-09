@@ -27,7 +27,10 @@ class _AboutState extends State<About> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
         body: Container(
             margin: EdgeInsetsDirectional.only(top: 50),
             child: Column(
@@ -42,8 +45,10 @@ class _AboutState extends State<About> {
                     child: Row(
                       children: [
                         Expanded(
-                            child: TextInputWidget(this.aboutController,
-                                "Write a little something about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.  ")),
+                            child: TextInputWidget(
+                                this.aboutController,
+                                "Write a little something about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.  ",
+                                8)),
                       ],
                     )),
                 Container(

@@ -21,7 +21,10 @@ class _PhoneNumberState extends State<PhoneNumber> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+          appBar: AppBar(
+          backgroundColor: Colors.white,
+          iconTheme: IconThemeData(color: Colors.black),
+        ),
         body: Container(
             margin: EdgeInsetsDirectional.only(top: 50),
             child: Column(
