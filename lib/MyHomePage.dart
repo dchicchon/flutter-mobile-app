@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:mobile_app/About.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:mobile_app/PhoneNumber.dart';
-import 'Email.dart';
-import 'Name.dart';
-import 'Photo.dart';
+import 'package:flutter/material.dart'; // allows us to use dart?
+import 'package:mobile_app/About.dart'; // About page
+import 'package:image_picker/image_picker.dart'; // pick images with this
+import 'dart:io'; // used for File?
+import 'package:mobile_app/PhoneNumber.dart'; // PhoneNumber page
+import 'Email.dart'; // email page
+import 'Name.dart'; // name page
+import 'Photo.dart'; // photo page
 
 // State
 class MyHomePage extends StatefulWidget {
@@ -96,8 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void updatePhoto() {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => Photo(this.submitPhoto)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Photo(this.submitPhoto, this._image)));
   }
 
   void updateName() {
@@ -147,27 +149,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                        onTap: this.updatePhoto,
-                        child: CircleAvatar(
-                            radius: 55.0,
-                            backgroundColor: Colors.indigoAccent.shade400,
-                            child: ClipOval(
-                                child: (this._image != null)
-                                    ? Image.file(this._image)
-                                    : Image.asset("assets/no_img.jpg")))),
-                    // backgroundImage: AssetImage(this._image == null
-                    //     : this._image.path),
-                    // child: Ink(
-                    //     decoration: const ShapeDecoration(
-                    //         color: Colors.white,
-                    //         shape: CircleBorder()),
-                    //     child: IconButton(
-                    //         onPressed: this.updatePhoto,
-                    //         icon: Icon(Icons.edit),
-                    //         color: Colors.blue.shade800,
-                    //         padding: EdgeInsets.fromLTRB(
-                    //             50, 0, 0, 50)))))),
+                    Stack(
+                      children: [
+                        GestureDetector(
+                            onTap: this.updatePhoto,
+                            child: CircleAvatar(
+                                radius: 55.0,
+                                backgroundColor: Colors.indigoAccent.shade400,
+                                child: CircleAvatar(
+                                    radius: 50,
+                                    child: ClipOval(
+                                        child: (this._image != null)
+                                            ? Image.file(this._image)
+                                            : Image.asset(
+                                                "assets/no_img.jpg"))))),
+                        Positioned(
+                            top: 0,
+                            right: 0,   
+                            child: CircleAvatar(
+                                backgroundColor: Colors.white,
+                                radius: 20,
+                                child: IconButton(
+                                  onPressed: this.updatePhoto,
+                                  icon: Icon(Icons.edit),
+                                  color: Colors.blue.shade800,
+                                )))
+                      ],
+                    ),
                   ],
                 ),
                 Row(children: [

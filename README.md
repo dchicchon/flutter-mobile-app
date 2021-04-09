@@ -18,3 +18,8 @@ samples, guidance on mobile development, and a full API reference.
 ### Notes during production
 
 - do not use Expanded around GestureDetector or else child CircleAvatar within GestureDetector will not be shown
+
+### Common Errors to fix
+ - Renderflex overflowed by 5.1 pixels on the bottom
+ - System UI is not responding (might be a android emulator thing with Studio)
+ - Incorrect use of Parent Data Widget

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'dart:io'; // used for File?
 
 class Photo extends StatefulWidget {
   final Function() callback;
+  final File image;
 
-  Photo(this.callback);
+  Photo([this.callback, this.image]);
 
   @override
   _PhotoState createState() => _PhotoState();
@@ -30,12 +32,21 @@ class _PhotoState extends State<Photo> {
 
                 // Currently this container is helping with centering the page
                 Container(
-                    margin: EdgeInsetsDirectional.only(top: 25),
-                    child: Row(
-                      children: [
-                        // Expanded(child: TextInputWidget()),
-                      ],
-                    )),
+                  margin: EdgeInsetsDirectional.only(top: 25),
+                  // child: Row(
+                  //   children: [],
+                  // )
+                ),
+
+                // Show Current Avatar
+
+                CircleAvatar(
+                  radius: 55,
+                  child: ClipOval(
+                      child: widget.image != null
+                          ? Image.file(widget.image)
+                          : Image.asset("assets/no_img.jpg")),
+                ),
                 Container(
                     margin: EdgeInsetsDirectional.only(top: 50),
                     child: ElevatedButton(

@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'TextInputWidget.dart';
+import 'package:flutter/material.dart'; // Dart usage
+import 'TextInputWidget.dart'; // Text Input
 
 class Name extends StatefulWidget {
-  final Function(String, String) callback;
-  Name(this.callback);
+  final Function(String, String)
+      callback; // define what will be passed down to constructor
+  Name(this.callback); // constructor
 
   @override
   _NameState createState() => _NameState();
