@@ -165,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                                 "assets/no_img.jpg"))))),
                         Positioned(
                             top: 0,
-                            right: 0,   
+                            right: 0,
                             child: CircleAvatar(
                                 backgroundColor: Colors.white,
                                 radius: 20,
