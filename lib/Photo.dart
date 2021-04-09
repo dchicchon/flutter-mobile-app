@@ -12,8 +12,6 @@ class _PhotoState extends State<Photo> {
 
   void submitPhoto() {
     _showPicker(context);
-    print("Here");
-    print(_image);
   }
 
   void _showPicker(context) {
