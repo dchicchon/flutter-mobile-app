@@ -1,63 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 
 class Photo extends StatefulWidget {
+  final Function() callback;
+
+  Photo(this.callback);
+
   @override
   _PhotoState createState() => _PhotoState();
 }
 
 class _PhotoState extends State<Photo> {
-  File _image;
-
-  void submitPhoto() {
-    _showPicker(context);
+  void callPhotoCallback() {
+    widget.callback();
   }
 
-  void _showPicker(context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (BuildContext bc) {
-          return SafeArea(
-              child: Container(
-                  child: Wrap(
-            children: [
-              ListTile(
-                  leading: Icon(Icons.photo_library),
-                  title: Text("Photo Library"),
-                  onTap: () {
-                    _imgFromGallery();
-                    Navigator.of(context).pop();
-                  }),
-              ListTile(
-                  leading: Icon(Icons.photo_camera),
-                  title: Text("Camera"),
-                  onTap: () {
-                    _imgFromCamera();
-                    Navigator.of(context).pop();
-                  })
-            ],
-          )));
-        });
-  }
-
-  _imgFromCamera() async {
-    File image = await ImagePicker.pickImage(
-        source: ImageSource.camera, imageQuality: 50);
-    setState(() {
-      _image = image;
-    });
-  }
-
-  _imgFromGallery() async {
-    File image = await ImagePicker.pickImage(
-        source: ImageSource.gallery, imageQuality: 50);
-    setState(() {
-      _image = image;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(),
@@ -82,7 +38,7 @@ class _PhotoState extends State<Photo> {
                 Container(
                     margin: EdgeInsetsDirectional.only(top: 50),
                     child: ElevatedButton(
-                        onPressed: this.submitPhoto,
+                        onPressed: this.callPhotoCallback,
                         child: Text("Update", style: TextStyle(fontSize: 15)),
                         style: ElevatedButton.styleFrom(
                             primary: Colors.black,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_app/About.dart';
+import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:mobile_app/PhoneNumber.dart';
 import 'Email.dart';
-
 import 'Name.dart';
 import 'Photo.dart';
 
@@ -26,9 +26,42 @@ class _MyHomePageState extends State<MyHomePage> {
   String name = "Micah Smith";
   String email = "micahsmith@gmail.com";
   String phoneNumber = "(208)206-5039";
-  File photo;
   String about =
       "Hi my name is Micah Smith. I am from Mesa but go to school in Salt Lake City";
+  File _image;
+  final picker = ImagePicker();
+
+  Future getImage() async {
+    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    setState(() {
+      this._image = File(pickedFile.path);
+    });
+    print(this._image);
+  }
+
+  void submitPhoto() {
+    _showPicker(context);
+  }
+
+  void _showPicker(context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext bc) {
+          return SafeArea(
+              child: Container(
+                  child: Wrap(
+            children: [
+              ListTile(
+                  leading: Icon(Icons.photo_library),
+                  title: Text("Photo Library"),
+                  onTap: () {
+                    getImage();
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          )));
+        });
+  }
 
   void newName(String fname, String lname) {
     this.setState(() {
@@ -56,7 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void updatePhoto() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Photo()));
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => Photo(this.submitPhoto)));
   }
 
   void updateName() {
@@ -111,21 +145,22 @@ class _MyHomePageState extends State<MyHomePage> {
                         child: CircleAvatar(
                             radius: 55.0,
                             backgroundColor: Colors.indigoAccent.shade400,
-                            child: CircleAvatar(
-                                backgroundImage:
-                                    ExactAssetImage('assets/no_img.jpg'),
-                                backgroundColor: Colors.blue.shade800,
-                                radius: 50.0,
-                                child: Ink(
-                                    decoration: const ShapeDecoration(
-                                        color: Colors.white,
-                                        shape: CircleBorder()),
-                                    child: IconButton(
-                                        onPressed: this.updatePhoto,
-                                        icon: Icon(Icons.edit),
-                                        color: Colors.blue.shade800,
-                                        padding: EdgeInsets.fromLTRB(
-                                            50, 0, 0, 50)))))),
+                            child: ClipOval(
+                                child: (this._image != null)
+                                    ? Image.file(this._image)
+                                    : Image.asset("assets/no_img.jpg")))),
+                    // backgroundImage: AssetImage(this._image == null
+                    //     : this._image.path),
+                    // child: Ink(
+                    //     decoration: const ShapeDecoration(
+                    //         color: Colors.white,
+                    //         shape: CircleBorder()),
+                    //     child: IconButton(
+                    //         onPressed: this.updatePhoto,
+                    //         icon: Icon(Icons.edit),
+                    //         color: Colors.blue.shade800,
+                    //         padding: EdgeInsets.fromLTRB(
+                    //             50, 0, 0, 50)))))),
                   ],
                 ),
                 Row(children: [
@@ -149,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           title: Text("Phone",
                               style: TextStyle(
                                   color: Colors.grey.shade500, fontSize: 13)),
-                          subtitle: Text(this.email,
+                          subtitle: Text(this.phoneNumber,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
@@ -163,7 +198,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           title: Text("Email",
                               style: TextStyle(
                                   color: Colors.grey.shade500, fontSize: 13)),
-                          subtitle: Text(this.phoneNumber,
+                          subtitle: Text(this.email,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
