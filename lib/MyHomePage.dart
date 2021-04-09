@@ -9,9 +9,6 @@ import 'Photo.dart'; // photo page
 
 // State
 class MyHomePage extends StatefulWidget {
-  final String title;
-  MyHomePage({Key key, this.title}) : super(key: key);
-
   // This class is the configuration for the state. It holds the values (in this
   // case the title) provided by the parent (in this case the App widget) and
   // used by the build method of the State. Fields in a Widget subclass are
@@ -178,7 +175,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                Row(children: [
+                Expanded(
+                    child: Row(children: [
                   Expanded(
                       child: ListTile(
                           onTap: this.updateName,
@@ -190,9 +188,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                           trailing: Icon(Icons.navigate_next, size: 35))),
-                ]),
+                ])),
                 Divider(height: 0.5, color: Colors.black),
-                Row(children: [
+                Expanded(
+                    child: Row(children: [
                   Expanded(
                       child: ListTile(
                           onTap: this.updatePhoneNumber,
@@ -204,9 +203,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                           trailing: Icon(Icons.navigate_next, size: 35)))
-                ]),
+                ])),
                 Divider(height: 0.5, color: Colors.black),
-                Row(children: [
+                Expanded(
+                    child: Row(children: [
                   Expanded(
                       child: ListTile(
                           onTap: this.updateEmail,
@@ -218,9 +218,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                           trailing: Icon(Icons.navigate_next, size: 35))),
-                ]),
+                ])),
                 Divider(height: 0.5, color: Colors.black),
-                Row(children: [
+                Expanded(
+                    child: Row(children: [
                   Expanded(
                       child: ListTile(
                           onTap: this.updateAbout,
@@ -232,7 +233,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                   color: Colors.black,
                                   fontWeight: FontWeight.bold)),
                           trailing: Icon(Icons.navigate_next, size: 35))),
-                ]),
+                ])),
               ],
             )));
   }
