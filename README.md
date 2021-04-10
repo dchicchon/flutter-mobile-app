@@ -4,7 +4,9 @@ Flutter Project for Approachable Geeks
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+To run this app, you must have the following applications installed
+- Visual Studio Code
+- Flutter
 
 ### Running for Android
 - tech with tim guide stuff
