@@ -14,7 +14,9 @@ To run this app, you must have the following applications installed. There's alo
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Flutter](https://flutter.dev/docs/get-started/install)
 
-Once VS Code is downloaded, be sure to download the Flutter and Dart extensions as well to be able to run the applications.
+Once VS Code is downloaded and have added the Flutter SDK to PATH, be sure to download the Flutter and Dart extensions as well to be able to run the applications.
+
+- Adding the Flutter path for MacOS can be a hassle. If theres any trouble adding it, please refer to [this](https://www.youtube.com/watch?v=9GuzMsZQUYs&ab_channel=FlutterExplained) tutorial
 
 ## Running Android
 1. In order to use the Android Emulator, you must download [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQjwmcWDBhCOARIsALgJ2Qe_WACBGbq_Jl3Wcj5VxMz-qZLS2NdbG3Td5SMJu0qWk2ATcqMjzUAaArFGEALw_wcB&gclsrc=aw.ds)
