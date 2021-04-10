@@ -2,26 +2,30 @@
 
 Flutter Project for Approachable Geeks
 
+## Screenshots
+<figure>
+    <img src="https://i.imgur.com/SvLMRK0.png" alt='drawing' width='300' >
+    <figcaption>Main Profile Screen</figcaption>
+</figure>
+
 ## Getting Started
 
-To run this app, you must have the following applications installed
-- Visual Studio Code
-- Flutter
+To run this app, you must have the following applications installed. There's alot of good documentation online to download these 2 applications to Windows, Linux, and IOS.
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [Flutter](https://flutter.dev/docs/get-started/install)
 
-### Running for Android
-- tech with tim guide stuff
+Once VS Code is downloaded, be sure to download the Flutter and Dart extensions as well to be able to run the applications.
 
-### Running for ios
-- do this laster
+## Running Android
+1. In order to use the Android Emulator, you must download [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQjwmcWDBhCOARIsALgJ2Qe_WACBGbq_Jl3Wcj5VxMz-qZLS2NdbG3Td5SMJu0qWk2ATcqMjzUAaArFGEALw_wcB&gclsrc=aw.ds)
+2. After starting a `Flutter` project in VS Code, you can run `Flutter find devices` in the command pallete to select the Android Emulator.
+3. To begin debugging mode (start the application), make sure press `F5` on the keyboard.
 
-A few resources to get you started if this is your first Flutter project:
+For reference, I followed [this](https://www.youtube.com/watch?v=ly0hAtV7EBg&list=PLzMcBGfZo4-knQWGK2IC49Q_5AnQrFpzv&ab_channel=TechWithTim) tutorial for flutter on Android
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.\\
+## Running IOS
+1. Make sure to have [XCode](https://developer.apple.com/xcode/) downloaded on your machine
+2. 
 
 ### Notes during production
 
