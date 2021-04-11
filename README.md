@@ -27,9 +27,10 @@ For reference, I followed [this](https://www.youtube.com/watch?v=ly0hAtV7EBg&lis
 
 ## Running IOS
 1. Make sure to have [XCode](https://developer.apple.com/xcode/) downloaded on your machine
-2. 
+2. Open XCode at least once to sign the license agreement
+3. 
 
-### Notes during production
+## Production Notes
 
 - do not use Expanded around GestureDetector or else child CircleAvatar within GestureDetector will not be shown
 
