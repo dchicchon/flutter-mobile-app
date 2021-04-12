@@ -48,7 +48,7 @@ class _AboutState extends State<About> {
                             child: TextInputWidget(
                                 this.aboutController,
                                 "Write a little something about yourself. Do you like chatting? Are you a smoker? Do you bring pets with you? Etc.  ",
-                                8)),
+                                6)),
                       ],
                     )),
                 Container(
