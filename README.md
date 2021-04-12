@@ -15,7 +15,7 @@ Flutter Project for Approachable Geeks
 To run this app, you must have the following installed. There's alot of good documentation online to download these to Windows, Linux, and iOS. 
 
 - [Git](https://git-scm.com/) (in order to clone this repository)
-- [Visual Studio Code](https://code.visualstudio.com/)
+- [Visual Studio Code](https://code.visualstudio.com/) (there are guides for other code editors, but this is the one I used)
 - [Flutter](https://flutter.dev/docs/get-started/install)
 - [XCode](https://developer.apple.com/xcode/) (for iOS development)
 - [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQjwmcWDBhCOARIsALgJ2Qe_WACBGbq_Jl3Wcj5VxMz-qZLS2NdbG3Td5SMJu0qWk2ATcqMjzUAaArFGEALw_wcB&gclsrc=aw.ds) (for Android Development)
