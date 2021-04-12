@@ -53,7 +53,7 @@ After downloading the `Flutter` SDK, it is important that you add it to your `PA
 ---------------------------
 1. From the terminal, enter the directory where you have the `Flutter` SDK and enter `pwd` to get the directory path and copy it.
 
-2. Use the command `echo $SHELL` in your terminal to see which shell that you are using. If you are using Bash, create a new text file by using the command ` touch $HOME/.bash_profile`. If using Z shell, create a new texdt file by using the command `touch $HOME/.zshrc`. 
+2. Use the command `echo $SHELL` in your terminal to see which shell that you are using. If you are using Bash, create a new text file by using the command ` touch $HOME/.bash_profile`. If using Z shell, create a new text file by using the command `touch $HOME/.zshrc`. 
 
 3. Add to the file by using the command `nano $HOME/[your . file]` and paste in the path to the `Flutter` SDK. Be sure to save this text file.
 
