@@ -106,7 +106,7 @@ To run the project on an iOS please follow the additional steps stated in the `F
 
 I followed [this answer](https://stackoverflow.com/questions/49530673/build-flutter-app-in-release-mode-for-ios/65267640#65267640) in order to run on my device.
 
-If you happen to get the message  `Unable to verify developer`, 
+If you happen to get the message  `Unable to verify developer`, be sure to enter your `System Preferences` > `Security & Privacy` > `General`. There you should be able to allow your system to trust the files in the `Flutter` SDK.
 
 ## Production Notes
 
