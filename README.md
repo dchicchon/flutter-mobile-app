@@ -100,6 +100,14 @@ For reference, I followed [this](https://www.youtube.com/watch?v=ly0hAtV7EBg&lis
 
 For reference, I followed [this](https://www.youtube.com/playlist?list=PLSzsOkUDsvdtl3Pw48-R8lcK2oYkk40cm) tutorial for flutter on iOS
 
+## Running on iOS Device
+--------------------------
+To run the project on an iOS please follow the additional steps stated in the `Flutter` [guide](https://flutter.dev/docs/get-started/install/macos). Although it isn't stated in this guide, if you want to see your project on iOS version +14, you must run the command `flutter run --release` in order to deploy on iOS device.
+
+I followed [this answer](https://stackoverflow.com/questions/49530673/build-flutter-app-in-release-mode-for-ios/65267640#65267640) in order to run on my device.
+
+If you happen to get the message  `Unable to verify developer`, 
+
 ## Production Notes
 
 - do not use Expanded around GestureDetector or else child CircleAvatar within GestureDetector will not be shown
