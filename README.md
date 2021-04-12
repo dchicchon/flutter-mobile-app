@@ -75,9 +75,9 @@ Running this project is dependent on what device that you are using. However, at
     <img src="https://imgur.com/jceTzJx.png" alt='drawing' width='500' >
 </figure>
 
+Please run the command `flutter pub get` in order to get the packages in included in this project (image_picker).
 
-
-### Android Studio
+### Android Simulator
 ------------------------
 1. In order to use the Android Emulator, you must download [Android Studio](https://developer.android.com/studio/?gclid=Cj0KCQjwmcWDBhCOARIsALgJ2Qe_WACBGbq_Jl3Wcj5VxMz-qZLS2NdbG3Td5SMJu0qWk2ATcqMjzUAaArFGEALw_wcB&gclsrc=aw.ds) as mentioned in section `Getting Started`.
 2. After open the `Flutter` project in VS Code, you can run `Flutter find devices` in the `command pallete` to select the Android Emulator. You can also run `flutter emulators` in the terminal to see which emulators are available. To select an emulator in the terminal, run the command `flutter emulators --launch <emulator id>`
@@ -85,7 +85,7 @@ Running this project is dependent on what device that you are using. However, at
 
 For reference, I followed [this](https://www.youtube.com/watch?v=ly0hAtV7EBg&list=PLzMcBGfZo4-knQWGK2IC49Q_5AnQrFpzv&ab_channel=TechWithTim) tutorial for flutter on Android
 
-## Running iOS
+### iOS Simulator
 -------------------------
 1. In order to have the iPhone Simulator, make sure to have [XCode](https://developer.apple.com/xcode/) downloaded on your machine and open it at least once to sign the license agreement. (You must install the latest version of XCode to use Flutter)
 2. To have access to XCode command line tools, be sure to run the following in the command line
@@ -104,7 +104,7 @@ For reference, I followed [this](https://www.youtube.com/playlist?list=PLSzsOkUD
 
 - do not use Expanded around GestureDetector or else child CircleAvatar within GestureDetector will not be shown
 
-### Common Errors to fix
+## Common Errors to fix
  - Renderflex overflowed by 5.1 pixels on the bottom [Solution](https://stackoverflow.com/questions/67027187/need-to-use-expanded-widget-to-avoid-overflow-but-am-not-getting-the-desired-si?noredirect=1#comment118478298_67027187)
  - System UI is not responding (might be a android emulator thing with Studio)
  - Incorrect use of Parent Data Widget
