@@ -19,6 +19,7 @@ class _TextInputWidgetState extends State<TextInputWidget> {
     return Padding(
         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
         child: TextField(
+          textInputAction: TextInputAction.done,
           maxLines: widget.lines == null ? 1 : widget.lines,
           controller: widget.controller,
           decoration: InputDecoration(
